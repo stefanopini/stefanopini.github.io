@@ -1,0 +1,46 @@
+{% include base_path %}
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+
+          {% comment %}
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          {% endcomment %}
+
+          {% assign urlsize = page.url | size | minus: 1 %}
+          {% assign pageur = page.url | slice: 0, size %}
+
+          {% if base_path contains page.url or base_path contains pageur %}
+            {% assign itemclass = 'masthead__menu-item--current' %}
+          {% else %}
+            {% assign itemclass = '' %}
+          {% endif %}
+
+          <li class="masthead__menu-item {{ itemclass }}"><a href="{{ base_path }}/">Home</a></li>
+          {% for link in site.data.navigation.main %}
+            {% if link.url contains 'http' %}
+              {% assign domain = '' %}
+              {% assign target = '_blank' %}
+              {% else %}
+              {% assign domain = base_path %}
+              {% assign target = '' %}
+
+              {% if link.url contains page.url or link.url contains pageur %}
+                {% assign itemclass = 'masthead__menu-item--current' %}
+              {% else %}
+                {% assign itemclass = '' %}
+              {% endif %}
+            {% endif %}
+            <li class="masthead__menu-item {{ itemclass }}"><a target="{{ target }}" href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>

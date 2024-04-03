@@ -1,0 +1,8 @@
+Link:
+{% if page.projectpage %} <a target="_blank" href="{{ page.projectpage }}">Poject Page</a>{% endif %}
+{% if page.paperpdf %} <a target="_blank" href="{{ page.paperpdf }}">Paper</a>{% endif %}
+{% if page.paperpdfsupp %} <a target="_blank" href="{{ page.paperpdfsupp }}">Supplementary Material</a>{% endif %}
+{% if page.dataset %} <a target="_blank" href="{{ page.dataset }}">Dataset</a>{% endif %}
+{% if page.code %} <a target="_blank" href="{{ page.code }}">Code</a>{% endif %}
+{% if page.presentation %} <a target="_blank" href="{{ page.presentation | prepend: base_path }}">Presentation</a>{% endif %}
+{% if page.poster %} <a target="_blank" href="{{ page.poster | prepend: base_path }}">Poster</a>{% endif %}
